@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://84jlgn1inqo0"]
+
+[ext_resource type="Script" path="res://scene/cursor.gd" id="1_5si8l"]
+[ext_resource type="Texture2D" uid="uid://b6ls182b47e51" path="res://wimiProductions.png" id="2_g5dck"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pclai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xrqf"]
+size = Vector2(8, 8)
+
+[node name="cursor" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_5si8l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pclai")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0647773, 0.0647773)
+texture = ExtResource("2_g5dck")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="areaShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0xrqf")
+disabled = true
+debug_color = Color(1, 0.0026444, 0.0738145, 0.42)

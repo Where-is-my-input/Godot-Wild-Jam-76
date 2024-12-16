@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv4uys4jukmnd"]
+
+[ext_resource type="PackedScene" uid="uid://84jlgn1inqo0" path="res://scene/cursor.tscn" id="1_2cuap"]
+[ext_resource type="PackedScene" uid="uid://dulc6fd4satev" path="res://scene/tree.tscn" id="2_cacir"]
+
+[node name="main" type="Node2D"]
+
+[node name="cursor" parent="." instance=ExtResource("1_2cuap")]
+
+[node name="tree" parent="." instance=ExtResource("2_cacir")]
+position = Vector2(290, 167)
