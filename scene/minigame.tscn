@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://exd7637ip8ur"]
+[gd_scene load_steps=7 format=3 uid="uid://exd7637ip8ur"]
 
 [ext_resource type="PackedScene" uid="uid://bivixr7mshjnk" path="res://scene/target.tscn" id="1_5nsbx"]
 [ext_resource type="Script" path="res://scene/minigame.gd" id="1_qqq7r"]
+[ext_resource type="Script" path="res://scene/color_rect.gd" id="3_tqexx"]
+[ext_resource type="AudioStream" uid="uid://yruif1hvk48l" path="res://Assets/sfx/click.wav" id="4_hvnbt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxarm"]
+size = Vector2(5.8, 5.6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iu5v"]
+size = Vector2(8.8, 8.8)
 
 [node name="minigame" type="Node2D" node_paths=PackedStringArray("targets")]
 z_index = 20
@@ -20,3 +28,33 @@ position = Vector2(0, 25)
 
 [node name="target4" parent="." instance=ExtResource("1_5nsbx")]
 position = Vector2(0, -25)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+script = ExtResource("3_tqexx")
+
+[node name="areaColor" type="Area2D" parent="ColorRect" groups=["color"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/areaColor"]
+position = Vector2(2.4, 2.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wxarm")
+
+[node name="Timer" type="Timer" parent="ColorRect"]
+
+[node name="areaTarget" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaTarget"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_6iu5v")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="areaTarget"]
+stream = ExtResource("4_hvnbt")
+bus = &"SFX"
+
+[connection signal="timeout" from="ColorRect/Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="areaTarget" to="." method="_on_area_target_area_entered"]
+[connection signal="area_exited" from="areaTarget" to="." method="_on_area_target_area_exited"]

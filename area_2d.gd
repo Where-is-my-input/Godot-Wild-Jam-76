@@ -17,3 +17,11 @@ func action():
 	var parent = get_parent()
 	if parent.has_method("action"):
 		parent.action()
+
+func _on_body_entered(body: Node2D) -> void:
+	var parent = get_parent()
+	parent.set_modulate(Color(0.9, 0.9, 0.9, 1))
+
+func _on_body_exited(body: Node2D) -> void:
+	var parent = get_parent()
+	parent.set_modulate(Color(1, 1, 1, 1))

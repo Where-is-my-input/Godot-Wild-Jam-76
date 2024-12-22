@@ -17,6 +17,7 @@ script = ExtResource("1_5si8l")
 shape = SubResource("RectangleShape2D_pclai")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.0647773, 0.0647773)
 texture = ExtResource("2_g5dck")
 
@@ -26,3 +27,17 @@ texture = ExtResource("2_g5dck")
 shape = SubResource("RectangleShape2D_0xrqf")
 disabled = true
 debug_color = Color(1, 0.0026444, 0.0738145, 0.42)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -11.0
+offset_right = 10.0
+offset_bottom = 9.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_top = -14.0
+offset_right = 20.0
+offset_bottom = 6.0
+rotation = 0.785398
+color = Color(0.460995, 0.460995, 0.460995, 1)

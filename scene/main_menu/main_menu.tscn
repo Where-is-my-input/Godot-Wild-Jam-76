@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs87sly5qy386"]
+[gd_scene load_steps=6 format=3 uid="uid://cs87sly5qy386"]
 
 [ext_resource type="Script" path="res://scene/main_menu/main_menu.gd" id="1_8giav"]
 [ext_resource type="PackedScene" uid="uid://bv4uys4jukmnd" path="res://main.tscn" id="2_3rtrj"]
 [ext_resource type="Texture2D" uid="uid://3yakeh724gq6" path="res://Assets/logo.png" id="3_ej40s"]
+[ext_resource type="Texture2D" uid="uid://dsvcaosfpjwkf" path="res://Assets/background.png" id="4_lkxrt"]
+[ext_resource type="AudioStream" uid="uid://cedc7askypula" path="res://Assets/bgm/soled_-_nono.wav" id="5_epo3f"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -50,6 +52,18 @@ offset_top = 42.0
 offset_right = 760.0
 offset_bottom = 436.0
 texture = ExtResource("3_ej40s")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = -50
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("4_lkxrt")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_epo3f")
+autoplay = true
 
 [connection signal="pressed" from="vBox/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="vBox/options" to="." method="_on_options_pressed"]

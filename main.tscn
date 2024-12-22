@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bv4uys4jukmnd"]
+[gd_scene load_steps=30 format=3 uid="uid://bv4uys4jukmnd"]
 
 [ext_resource type="PackedScene" uid="uid://84jlgn1inqo0" path="res://scene/cursor.tscn" id="1_2cuap"]
 [ext_resource type="Script" path="res://main.gd" id="1_jcw8u"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cq5t660tjnmlv" path="res://Assets/fire.png" id="16_56oin"]
 [ext_resource type="Texture2D" uid="uid://c0n3d3bvw4pje" path="res://Assets/food.png" id="16_pjkuo"]
 [ext_resource type="Script" path="res://fireplace.gd" id="18_2xti7"]
+[ext_resource type="AudioStream" uid="uid://co7d411g41im" path="res://Assets/bgm/a_night_on_the_ice.wav" id="23_23bmr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3g83k"]
 size = Vector2(263.333, 708.333)
@@ -245,13 +246,30 @@ autostart = true
 [node name="timerBear" type="Timer" parent="."]
 one_shot = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_23bmr")
+autoplay = true
+
 [connection signal="area_entered" from="Control/mc/Area2D" to="Control/mc/Area2D" method="_on_area_entered"]
+[connection signal="body_entered" from="Control/mc/Area2D" to="Control/mc/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Control/mc/Area2D" to="Control/mc/Area2D" method="_on_body_exited"]
 [connection signal="area_entered" from="Control/tent/Area2D" to="Control/tent/Area2D" method="_on_area_entered"]
+[connection signal="body_entered" from="Control/tent/Area2D" to="Control/tent/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Control/tent/Area2D" to="Control/tent/Area2D" method="_on_body_exited"]
 [connection signal="area_entered" from="Control/bear/Area2D" to="Control/bear/Area2D" method="_on_area_entered"]
+[connection signal="body_entered" from="Control/bear/Area2D" to="Control/bear/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Control/bear/Area2D" to="Control/bear/Area2D" method="_on_body_exited"]
 [connection signal="area_entered" from="Control/water/Area2D" to="Control/water/Area2D" method="_on_area_entered"]
+[connection signal="body_entered" from="Control/water/Area2D" to="Control/water/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Control/water/Area2D" to="Control/water/Area2D" method="_on_body_exited"]
 [connection signal="area_entered" from="Control/food/Area2D" to="Control/food/Area2D" method="_on_area_entered"]
+[connection signal="body_entered" from="Control/food/Area2D" to="Control/food/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Control/food/Area2D" to="Control/food/Area2D" method="_on_body_exited"]
 [connection signal="area_entered" from="Control/fireplace/Area2D" to="Control/fireplace/Area2D" method="_on_area_entered"]
+[connection signal="body_entered" from="Control/fireplace/Area2D" to="Control/fireplace/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Control/fireplace/Area2D" to="Control/fireplace/Area2D" method="_on_body_exited"]
 [connection signal="timeout" from="Control/fireplace/timerFire" to="Control/fireplace" method="_on_timer_fire_timeout"]
 [connection signal="timeout" from="timerTick" to="." method="_on_timer_tick_timeout"]
 [connection signal="timeout" from="timerWeather" to="." method="_on_timer_weather_timeout"]
 [connection signal="timeout" from="timerBear" to="." method="_on_timer_bear_timeout"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
