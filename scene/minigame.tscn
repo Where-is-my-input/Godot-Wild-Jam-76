@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://exd7637ip8ur"]
+
+[ext_resource type="PackedScene" uid="uid://bivixr7mshjnk" path="res://scene/target.tscn" id="1_5nsbx"]
+[ext_resource type="Script" path="res://scene/minigame.gd" id="1_qqq7r"]
+
+[node name="minigame" type="Node2D" node_paths=PackedStringArray("targets")]
+script = ExtResource("1_qqq7r")
+targets = [NodePath("target"), NodePath("target2"), NodePath("target3"), NodePath("target4")]
+
+[node name="target" parent="." instance=ExtResource("1_5nsbx")]
+position = Vector2(25, 0)
+
+[node name="target2" parent="." instance=ExtResource("1_5nsbx")]
+position = Vector2(-25, 0)
+
+[node name="target3" parent="." instance=ExtResource("1_5nsbx")]
+position = Vector2(0, 25)
+
+[node name="target4" parent="." instance=ExtResource("1_5nsbx")]
+position = Vector2(0, -25)

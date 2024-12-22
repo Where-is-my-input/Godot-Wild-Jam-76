@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bivixr7mshjnk"]
+
+[ext_resource type="Script" path="res://scene/target.gd" id="1_7ouqi"]
+[ext_resource type="Texture2D" uid="uid://b6ls182b47e51" path="res://wimiProductions.png" id="1_vu6q2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqylv"]
+
+[node name="target" type="Area2D"]
+script = ExtResource("1_7ouqi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0404858, 0.0404858)
+texture = ExtResource("1_vu6q2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iqylv")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

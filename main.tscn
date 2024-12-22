@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv4uys4jukmnd"]
+[gd_scene load_steps=17 format=3 uid="uid://bv4uys4jukmnd"]
 
 [ext_resource type="PackedScene" uid="uid://84jlgn1inqo0" path="res://scene/cursor.tscn" id="1_2cuap"]
 [ext_resource type="Script" path="res://main.gd" id="1_jcw8u"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cqgj4ntuid27" path="res://Assets/bonfire.png" id="13_n5rpu"]
 [ext_resource type="Texture2D" uid="uid://blgfoxsueovps" path="res://Assets/bear.png" id="14_a3q1q"]
 [ext_resource type="Texture2D" uid="uid://dmpojj5up7dxl" path="res://Assets/water.png" id="15_gebbu"]
+[ext_resource type="PackedScene" uid="uid://exd7637ip8ur" path="res://scene/minigame.tscn" id="16_12pbg"]
 [ext_resource type="Texture2D" uid="uid://c0n3d3bvw4pje" path="res://Assets/food.png" id="16_pjkuo"]
 
 [node name="main" type="Node2D"]
@@ -148,5 +149,8 @@ texture = ExtResource("16_pjkuo")
 [node name="timerTick" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="minigame" parent="." instance=ExtResource("16_12pbg")]
+position = Vector2(375, 372)
 
 [connection signal="timeout" from="timerTick" to="." method="_on_timer_tick_timeout"]
