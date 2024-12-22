@@ -1,11 +1,152 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv4uys4jukmnd"]
+[gd_scene load_steps=16 format=3 uid="uid://bv4uys4jukmnd"]
 
 [ext_resource type="PackedScene" uid="uid://84jlgn1inqo0" path="res://scene/cursor.tscn" id="1_2cuap"]
+[ext_resource type="Script" path="res://main.gd" id="1_jcw8u"]
 [ext_resource type="PackedScene" uid="uid://dulc6fd4satev" path="res://scene/tree.tscn" id="2_cacir"]
+[ext_resource type="Texture2D" uid="uid://dsvcaosfpjwkf" path="res://Assets/background.png" id="3_dpjth"]
+[ext_resource type="Texture2D" uid="uid://ddh50sk1ec448" path="res://Assets/mc.png" id="4_fxa33"]
+[ext_resource type="Texture2D" uid="uid://dryvnvfr25en4" path="res://Assets/mc-frozen.png" id="5_cagn5"]
+[ext_resource type="Texture2D" uid="uid://c4bd6vcl5otqk" path="res://Assets/icons.png" id="6_y4o2t"]
+[ext_resource type="PackedScene" uid="uid://d3446w2uruqfx" path="res://scene/progress_bar.tscn" id="7_fewfx"]
+[ext_resource type="Texture2D" uid="uid://bf0yg2fb8msvj" path="res://Assets/umbrella.png" id="7_i0m4b"]
+[ext_resource type="Texture2D" uid="uid://i25efgxbb1el" path="res://Assets/barraca.png" id="10_2n0hv"]
+[ext_resource type="Texture2D" uid="uid://d2cxdovptnfhs" path="res://Assets/rain.png" id="12_obv8q"]
+[ext_resource type="Texture2D" uid="uid://cqgj4ntuid27" path="res://Assets/bonfire.png" id="13_n5rpu"]
+[ext_resource type="Texture2D" uid="uid://blgfoxsueovps" path="res://Assets/bear.png" id="14_a3q1q"]
+[ext_resource type="Texture2D" uid="uid://dmpojj5up7dxl" path="res://Assets/water.png" id="15_gebbu"]
+[ext_resource type="Texture2D" uid="uid://c0n3d3bvw4pje" path="res://Assets/food.png" id="16_pjkuo"]
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_jcw8u")
 
 [node name="cursor" parent="." instance=ExtResource("1_2cuap")]
+z_index = 15
 
 [node name="tree" parent="." instance=ExtResource("2_cacir")]
 position = Vector2(290, 167)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+
+[node name="bg" type="TextureRect" parent="Control"]
+z_index = -50
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_dpjth")
+
+[node name="mc" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_fxa33")
+
+[node name="mc_frozen" type="TextureRect" parent="Control/mc"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_cagn5")
+
+[node name="umbrella" type="TextureRect" parent="Control/mc"]
+z_index = 10
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_i0m4b")
+
+[node name="stats" type="TextureRect" parent="Control"]
+z_index = 5
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_y4o2t")
+
+[node name="freeze" parent="Control/stats" instance=ExtResource("7_fewfx")]
+layout_mode = 0
+offset_left = 98.3333
+offset_top = 56.6667
+offset_right = 260.333
+offset_bottom = 83.6667
+value = 0.0
+
+[node name="sanity" parent="Control/stats" instance=ExtResource("7_fewfx")]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 125.0
+offset_right = 262.0
+offset_bottom = 152.0
+value = 0.0
+
+[node name="hunger" parent="Control/stats" instance=ExtResource("7_fewfx")]
+layout_mode = 0
+offset_left = 96.6667
+offset_top = 193.333
+offset_right = 258.667
+offset_bottom = 220.333
+value = 0.0
+
+[node name="thirst" parent="Control/stats" instance=ExtResource("7_fewfx")]
+layout_mode = 0
+offset_left = 98.3333
+offset_top = 261.667
+offset_right = 260.333
+offset_bottom = 288.667
+value = 0.0
+
+[node name="tent" type="TextureRect" parent="Control"]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_2n0hv")
+
+[node name="rain" type="TextureRect" parent="Control"]
+z_index = -45
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_obv8q")
+
+[node name="bonfire" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 1133.33
+offset_top = 345.0
+offset_right = 1720.33
+offset_bottom = 1032.0
+texture = ExtResource("13_n5rpu")
+
+[node name="bear" type="TextureRect" parent="Control"]
+z_index = -5
+layout_mode = 0
+offset_left = 36.6667
+offset_top = 185.0
+offset_right = 589.667
+offset_bottom = 631.0
+texture = ExtResource("14_a3q1q")
+
+[node name="water" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 481.667
+offset_top = 690.0
+offset_right = 734.667
+offset_bottom = 956.0
+texture = ExtResource("15_gebbu")
+
+[node name="food" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 371.667
+offset_top = 726.667
+offset_right = 603.667
+offset_bottom = 911.667
+texture = ExtResource("16_pjkuo")
+
+[node name="timerTick" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="timerTick" to="." method="_on_timer_tick_timeout"]

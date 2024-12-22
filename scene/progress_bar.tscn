@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3446w2uruqfx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dj2bg"]
+bg_color = Color(0.94902, 0.968627, 0.980392, 1)
+skew = Vector2(0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph1a7"]
+bg_color = Color(0.843137, 0.180392, 0.254902, 1)
+skew = Vector2(0.6, 0)
+
+[sub_resource type="Theme" id="Theme_gw07c"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_dj2bg")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_ph1a7")
+
+[node name="ProgressBar" type="ProgressBar"]
+z_as_relative = false
+offset_left = 98.0
+offset_top = 57.0
+offset_right = 260.0
+offset_bottom = 84.0
+theme = SubResource("Theme_gw07c")
+value = 50.0
+show_percentage = false
