@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://i7pw2dr43k5g"]
+
+[ext_resource type="PackedScene" uid="uid://ciawb2hlsxw1" path="res://scene/in_game_timer/igt_canvas.tscn" id="1_a2hje"]
+[ext_resource type="Script" path="res://scene/game_over.gd" id="1_o5p0j"]
+
+[node name="game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o5p0j")
+
+[node name="igt_canvas" parent="." instance=ExtResource("1_a2hje")]
+
+[node name="ing_game_timer_control" parent="igt_canvas" index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -305.0
+offset_top = -31.0
+offset_right = -265.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="lblIGT" parent="igt_canvas/ing_game_timer_control/hbIGT" index="0"]
+theme_override_font_sizes/font_size = 50
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_right = 135.5
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Game Over"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -109.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Main Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+
+[editable path="igt_canvas"]

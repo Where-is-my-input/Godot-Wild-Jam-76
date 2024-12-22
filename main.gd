@@ -21,6 +21,10 @@ extends Node2D
 
 var dying = false
 
+func _ready() -> void:
+	InGameTimer.resetIGT()
+	InGameTimer.paused = false
+
 func freezeTick():
 	if hunger.value >= 100:
 		freeze.value += freezeAmount 
@@ -42,7 +46,7 @@ func freezeTick():
 	if rain.visible != umbrella.visible:
 		freeze.value += 5
 	if dying && freeze.value >= 100:
-		print("Game over")
+		InGameTimer.paused = true
 	dying = freeze.value >= 100
 
 func _on_timer_tick_timeout() -> void:

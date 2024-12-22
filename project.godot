@@ -19,6 +19,7 @@ config/icon="res://Assets/logo.png"
 [autoload]
 
 Global="*res://scene/global.gd"
+InGameTimer="*res://scene/in_game_timer/in_game_timer.gd"
 
 [global_group]
 
