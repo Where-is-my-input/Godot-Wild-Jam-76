@@ -9,6 +9,7 @@
 size = Vector2(8, 8)
 
 [node name="cursor" type="CharacterBody2D"]
+z_index = 50
 motion_mode = 1
 script = ExtResource("1_5si8l")
 
@@ -19,7 +20,7 @@ shape = SubResource("RectangleShape2D_pclai")
 scale = Vector2(0.0647773, 0.0647773)
 texture = ExtResource("2_g5dck")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["cursor"]]
 
 [node name="areaShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_0xrqf")

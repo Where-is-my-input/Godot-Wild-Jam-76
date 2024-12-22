@@ -1,30 +1,51 @@
-[gd_scene load_steps=17 format=3 uid="uid://bv4uys4jukmnd"]
+[gd_scene load_steps=29 format=3 uid="uid://bv4uys4jukmnd"]
 
 [ext_resource type="PackedScene" uid="uid://84jlgn1inqo0" path="res://scene/cursor.tscn" id="1_2cuap"]
 [ext_resource type="Script" path="res://main.gd" id="1_jcw8u"]
-[ext_resource type="PackedScene" uid="uid://dulc6fd4satev" path="res://scene/tree.tscn" id="2_cacir"]
 [ext_resource type="Texture2D" uid="uid://dsvcaosfpjwkf" path="res://Assets/background.png" id="3_dpjth"]
 [ext_resource type="Texture2D" uid="uid://ddh50sk1ec448" path="res://Assets/mc.png" id="4_fxa33"]
 [ext_resource type="Texture2D" uid="uid://dryvnvfr25en4" path="res://Assets/mc-frozen.png" id="5_cagn5"]
+[ext_resource type="Script" path="res://mc.gd" id="5_npbca"]
 [ext_resource type="Texture2D" uid="uid://c4bd6vcl5otqk" path="res://Assets/icons.png" id="6_y4o2t"]
 [ext_resource type="PackedScene" uid="uid://d3446w2uruqfx" path="res://scene/progress_bar.tscn" id="7_fewfx"]
 [ext_resource type="Texture2D" uid="uid://bf0yg2fb8msvj" path="res://Assets/umbrella.png" id="7_i0m4b"]
 [ext_resource type="Texture2D" uid="uid://i25efgxbb1el" path="res://Assets/barraca.png" id="10_2n0hv"]
+[ext_resource type="Script" path="res://tent.gd" id="12_b8nh4"]
 [ext_resource type="Texture2D" uid="uid://d2cxdovptnfhs" path="res://Assets/rain.png" id="12_obv8q"]
-[ext_resource type="Texture2D" uid="uid://cqgj4ntuid27" path="res://Assets/bonfire.png" id="13_n5rpu"]
+[ext_resource type="Script" path="res://water.gd" id="13_ksqwn"]
 [ext_resource type="Texture2D" uid="uid://blgfoxsueovps" path="res://Assets/bear.png" id="14_a3q1q"]
+[ext_resource type="Script" path="res://bear.gd" id="14_hmnbk"]
+[ext_resource type="Script" path="res://area_2d.gd" id="14_vijc7"]
+[ext_resource type="Texture2D" uid="uid://dmdfwofi7nquv" path="res://Assets/wood.png" id="15_36hoj"]
 [ext_resource type="Texture2D" uid="uid://dmpojj5up7dxl" path="res://Assets/water.png" id="15_gebbu"]
-[ext_resource type="PackedScene" uid="uid://exd7637ip8ur" path="res://scene/minigame.tscn" id="16_12pbg"]
+[ext_resource type="Script" path="res://food.gd" id="15_ip6yy"]
+[ext_resource type="Texture2D" uid="uid://cq5t660tjnmlv" path="res://Assets/fire.png" id="16_56oin"]
 [ext_resource type="Texture2D" uid="uid://c0n3d3bvw4pje" path="res://Assets/food.png" id="16_pjkuo"]
+[ext_resource type="Script" path="res://fireplace.gd" id="18_2xti7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3g83k"]
+size = Vector2(263.333, 708.333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tll4d"]
+size = Vector2(675, 380)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vm4r2"]
+size = Vector2(421.667, 355)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5lrn"]
+size = Vector2(51.6666, 143.333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f1v4"]
+size = Vector2(86.6667, 106.667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iufp6"]
+size = Vector2(315, 115)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_jcw8u")
 
 [node name="cursor" parent="." instance=ExtResource("1_2cuap")]
 z_index = 15
-
-[node name="tree" parent="." instance=ExtResource("2_cacir")]
-position = Vector2(290, 167)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -45,6 +66,7 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("4_fxa33")
+script = ExtResource("5_npbca")
 
 [node name="mc_frozen" type="TextureRect" parent="Control/mc"]
 visible = false
@@ -54,11 +76,19 @@ offset_bottom = 40.0
 texture = ExtResource("5_cagn5")
 
 [node name="umbrella" type="TextureRect" parent="Control/mc"]
+visible = false
 z_index = 10
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("7_i0m4b")
+
+[node name="Area2D" type="Area2D" parent="Control/mc"]
+script = ExtResource("14_vijc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/mc/Area2D"]
+position = Vector2(943.333, 472.5)
+shape = SubResource("RectangleShape2D_3g83k")
 
 [node name="stats" type="TextureRect" parent="Control"]
 z_index = 5
@@ -105,23 +135,25 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("10_2n0hv")
+script = ExtResource("12_b8nh4")
+
+[node name="Area2D" type="Area2D" parent="Control/tent"]
+script = ExtResource("14_vijc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/tent/Area2D"]
+position = Vector2(1425.83, 368.333)
+shape = SubResource("RectangleShape2D_tll4d")
 
 [node name="rain" type="TextureRect" parent="Control"]
+visible = false
 z_index = -45
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("12_obv8q")
 
-[node name="bonfire" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 1133.33
-offset_top = 345.0
-offset_right = 1720.33
-offset_bottom = 1032.0
-texture = ExtResource("13_n5rpu")
-
 [node name="bear" type="TextureRect" parent="Control"]
+visible = false
 z_index = -5
 layout_mode = 0
 offset_left = 36.6667
@@ -129,28 +161,97 @@ offset_top = 185.0
 offset_right = 589.667
 offset_bottom = 631.0
 texture = ExtResource("14_a3q1q")
+script = ExtResource("14_hmnbk")
+
+[node name="Area2D" type="Area2D" parent="Control/bear"]
+script = ExtResource("14_vijc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/bear/Area2D"]
+position = Vector2(302.5, 222.5)
+shape = SubResource("RectangleShape2D_vm4r2")
 
 [node name="water" type="TextureRect" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 481.667
 offset_top = 690.0
 offset_right = 734.667
 offset_bottom = 956.0
 texture = ExtResource("15_gebbu")
+script = ExtResource("13_ksqwn")
+
+[node name="Area2D" type="Area2D" parent="Control/water"]
+script = ExtResource("14_vijc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/water/Area2D"]
+position = Vector2(144.166, 128.333)
+shape = SubResource("RectangleShape2D_h5lrn")
 
 [node name="food" type="TextureRect" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 371.667
 offset_top = 726.667
 offset_right = 603.667
 offset_bottom = 911.667
 texture = ExtResource("16_pjkuo")
+script = ExtResource("15_ip6yy")
+
+[node name="Area2D" type="Area2D" parent="Control/food"]
+script = ExtResource("14_vijc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/food/Area2D"]
+position = Vector2(120, 91.6663)
+shape = SubResource("RectangleShape2D_1f1v4")
+
+[node name="fireplace" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 1281.67
+offset_top = 818.333
+offset_right = 1685.67
+offset_bottom = 1028.33
+texture = ExtResource("15_36hoj")
+script = ExtResource("18_2xti7")
+
+[node name="fire" type="TextureRect" parent="Control/fireplace"]
+visible = false
+layout_mode = 0
+offset_left = 16.6667
+offset_top = -376.667
+offset_right = 411.667
+offset_bottom = 191.333
+texture = ExtResource("16_56oin")
+
+[node name="Area2D" type="Area2D" parent="Control/fireplace"]
+script = ExtResource("14_vijc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/fireplace/Area2D"]
+position = Vector2(212.5, 112.5)
+shape = SubResource("RectangleShape2D_iufp6")
+
+[node name="timerFire" type="Timer" parent="Control/fireplace"]
+one_shot = true
 
 [node name="timerTick" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
-[node name="minigame" parent="." instance=ExtResource("16_12pbg")]
-position = Vector2(375, 372)
+[node name="timerWeather" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
 
+[node name="timerBear" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Control/mc/Area2D" to="Control/mc/Area2D" method="_on_area_entered"]
+[connection signal="area_entered" from="Control/tent/Area2D" to="Control/tent/Area2D" method="_on_area_entered"]
+[connection signal="area_entered" from="Control/bear/Area2D" to="Control/bear/Area2D" method="_on_area_entered"]
+[connection signal="area_entered" from="Control/water/Area2D" to="Control/water/Area2D" method="_on_area_entered"]
+[connection signal="area_entered" from="Control/food/Area2D" to="Control/food/Area2D" method="_on_area_entered"]
+[connection signal="area_entered" from="Control/fireplace/Area2D" to="Control/fireplace/Area2D" method="_on_area_entered"]
+[connection signal="timeout" from="Control/fireplace/timerFire" to="Control/fireplace" method="_on_timer_fire_timeout"]
 [connection signal="timeout" from="timerTick" to="." method="_on_timer_tick_timeout"]
+[connection signal="timeout" from="timerWeather" to="." method="_on_timer_weather_timeout"]
+[connection signal="timeout" from="timerBear" to="." method="_on_timer_bear_timeout"]

@@ -16,6 +16,14 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/image="res://wimiProductions.png"
 config/icon="res://Assets/logo.png"
 
+[autoload]
+
+Global="*res://scene/global.gd"
+
+[global_group]
+
+cursor=""
+
 [input]
 
 interact={

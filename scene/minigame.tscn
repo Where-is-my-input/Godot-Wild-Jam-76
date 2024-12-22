@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://scene/minigame.gd" id="1_qqq7r"]
 
 [node name="minigame" type="Node2D" node_paths=PackedStringArray("targets")]
+z_index = 20
+scale = Vector2(5, 5)
 script = ExtResource("1_qqq7r")
 targets = [NodePath("target"), NodePath("target2"), NodePath("target3"), NodePath("target4")]
 
